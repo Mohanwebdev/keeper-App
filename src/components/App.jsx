@@ -55,7 +55,7 @@ content:editInfo.content})
 
 const addNote= async(newNote)=> {
     try {
-      await  axios.post("https://keeper-app-api/addNote", {
+      await  axios.post("https://keeper-app-api.onrender.com/addNote", {
         username:user,
         ...newNote
       },
@@ -76,7 +76,7 @@ const addNote= async(newNote)=> {
   const editNote =async (value)=>{
     setEditstate(false);
     try {
-      await  axios.post("https://keeper-app-api/editNote", {
+      await  axios.post("https://keeper-app-api.onrender.com/editNote", {
         username:user,
         ...value
       },
@@ -99,7 +99,7 @@ const addNote= async(newNote)=> {
 
   const deleteNote= async(id)=> {
     try {
-      await  axios.post("https://keeper-app-api/deleteNote", {
+      await  axios.post("https://keeper-app-api.onrender.com/deleteNote", {
         username:user,
         id:id
       },
@@ -119,7 +119,7 @@ const addNote= async(newNote)=> {
 
   const logOut=async()=>{
     try {
-      await  axios.get("https://keeper-app-api/logout")
+      await  axios.get("https://keeper-app-api.onrender.com/logout")
           .then((res)=>{
             setLoginState(res.data.status);
           })
