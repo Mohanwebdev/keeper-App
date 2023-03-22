@@ -21,7 +21,7 @@ const[emailStyle,setEmailstyle] = useState(false);
 const [passwordStyle,setPasswordstyle] = useState(false);
 
 
-const [loginState,updateLogin,user,updateUser,updateNotes] = useContext(Context);
+const [loginState,updateLogin,user,updateUser,updateNotes,updateEdit,logOut,updateNewuser] = useContext(Context);
 
 const handleChange=(e)=>{
 setLogin((preval)=>{
@@ -74,7 +74,6 @@ const handleSubmit = async (e) => {
             }
           )
           .then((res)=>{updateLogin(res.data.status);
-            
             updateNotes(res.data.notes);
             setLogin({
               username:'',
@@ -82,6 +81,7 @@ const handleSubmit = async (e) => {
             });
             setPasswordstyle(false);
             setEmailstyle(false);
+            updateNewuser(false);
           })
     } catch (error) {
       console.error(error);
@@ -98,7 +98,7 @@ const handleSubmit = async (e) => {
   {err&&<Alert severity="warning">Email or Password is incorrect !!</Alert>}
   {!emailError ? <div className="col-12">
   
- <input name="username"  type="text" value={login.username} placeholder="Email" onChange={handleChange} onBlur={validateEmail} className= {emailStyle?"form-control is-valid":"form-control"} id="validationServer01"  required/>
+ <input name="username" autocomplete="off" type="text" value={login.username} placeholder="Email" onChange={handleChange} onBlur={validateEmail} className= {emailStyle?"form-control is-valid":"form-control"} id="validationServer01"  required/>
  
  {emailStyle &&<div className="valid-feedback">
    Looks good!
@@ -107,7 +107,7 @@ const handleSubmit = async (e) => {
  
  </div> :   <div className="col-12">
     
-    <input name="username"  type="text" value={login.username} placeholder="Email" onChange={handleChange} onBlur={validateEmail}  className="form-control is-invalid" id="validationServer04" aria-describedby="validationServer05Feedback" required/>
+    <input name="username" autocomplete="off" type="text" value={login.username} placeholder="Email" onChange={handleChange} onBlur={validateEmail}  className="form-control is-invalid" id="validationServer04" aria-describedby="validationServer05Feedback" required/>
     <div id="validationServer04Feedback" className="invalid-feedback">
       {emailError}
     </div>

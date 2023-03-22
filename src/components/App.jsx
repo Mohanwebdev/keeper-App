@@ -24,6 +24,8 @@ function App() {
 
   const [user,setUser] = useState('');
 
+  const [newUser,setNewuser] = useState(false);
+
   const [editState,setEditstate] = useState(false);
 
   const [tempNote,setTempnote] = useState({
@@ -32,6 +34,9 @@ function App() {
     content: ""
   })
 
+function updateNewuser(info){
+  setNewuser(info);
+}
 
 function updateLogin(loginInfo){
   setLoginState(loginInfo);
@@ -54,6 +59,7 @@ content:editInfo.content})
 }
 
 const addNote= async(newNote)=> {
+  
     try {
       await  axios.post("https://keeper-app-api.onrender.com/addNote", {
         username:user,
@@ -65,7 +71,8 @@ const addNote= async(newNote)=> {
               }
             }
           )
-          .then((res)=>{setNotes(res.data.notes)})
+          .then((res)=>{setNotes(res.data.notes);
+            updateNewuser(false);})
     } catch (error) {
       console.error(error);
     }
@@ -131,7 +138,7 @@ const addNote= async(newNote)=> {
 
   return (
     <div>
-    <Context.Provider value={[loginState,updateLogin,user,updateUser,updateNotes,updateEdit,logOut]}>
+    <Context.Provider value={[loginState,updateLogin,user,updateUser,updateNotes,updateEdit,logOut,updateNewuser]}>
       <BrowserRouter>
       <Header />
       <Routes>
@@ -150,10 +157,12 @@ const addNote= async(newNote)=> {
     {loginState ? (<div className="content" >
       {editState &&  <EditArea className="editArea" onedit={editNote} value={tempNote} />}
       {!editState && <CreateArea onAdd={addNote} />}
-      <div className="container">
+
+      {!newUser&&<div className="container">
       <div className="row">
       {notes.map((noteItem,index) => {
         return (
+          
           <Note
             key={index}
             id={noteItem.noteId}
@@ -165,7 +174,8 @@ const addNote= async(newNote)=> {
         );
       })}
       
-      </div></div></div>) : null}
+      </div></div>}
+      </div>) : null}
     
       <Footer />
       </Context.Provider>

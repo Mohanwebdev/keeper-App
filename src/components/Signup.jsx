@@ -19,7 +19,7 @@ const [existingUser,setExistinguser] = useState(false);
   const[emailStyle,setEmailstyle] = useState(false);
   const [passwordStyle,setPasswordstyle] = useState(false);
 
-  const [loginState,updateLogin,user,updateUser] = useContext(Context);
+  const [loginState,updateLogin,user,updateUser,updateNotes,updateEdit,logOut,updateNewuser] = useContext(Context);
 
 const handleChange=(e)=>{
   setRegister((preval)=>{
@@ -71,7 +71,9 @@ const handleChange=(e)=>{
               }
             )
           .then((res)=>{
-              setExistinguser(true);
+            updateNewuser(true);
+            updateNotes(res.data.notes);
+              setExistinguser(res.data.exist);
             updateLogin(res.data.status);
             setRegister({
               username:'',
@@ -94,7 +96,7 @@ const handleChange=(e)=>{
   {existingUser&&<Alert severity="warning">Email already exist !!</Alert>}
   {!emailError ? <div className="col-12">
  
- <input name="username"  type="text" value={register.username} placeholder="Email" onChange={handleChange} onBlur={validateEmail} className= {emailStyle?"form-control is-valid":"form-control"} id="validationServer01"  required/>
+ <input name="username" autocomplete="off"  type="text" value={register.username} placeholder="Email" onChange={handleChange} onBlur={validateEmail} className= {emailStyle?"form-control is-valid":"form-control"} id="validationServer01"  required/>
  
  {emailStyle &&<div className="valid-feedback">
    Looks good!
@@ -103,7 +105,7 @@ const handleChange=(e)=>{
  
  </div> :   <div className="col-12">
     
-    <input name="username"  type="text" value={register.username} placeholder="Email" onChange={handleChange} onBlur={validateEmail}  className="form-control is-invalid" id="validationServer04" aria-describedby="validationServer05Feedback" required/>
+    <input name="username" autocomplete="off" type="text" value={register.username} placeholder="Email" onChange={handleChange} onBlur={validateEmail}  className="form-control is-invalid" id="validationServer04" aria-describedby="validationServer05Feedback" required/>
     <div id="validationServer04Feedback" className="invalid-feedback">
       {emailError}
     </div>

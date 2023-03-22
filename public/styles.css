@@ -28,6 +28,7 @@ nav {
 nav h1 {
   color: #ECF2FF;
   font-family: "McLaren", cursive;
+ 
   font-weight: 200;
 }
 .navbar{
@@ -83,6 +84,7 @@ footer p {
 .note h1 {
   font-size: 1.1em;
   margin-bottom: 6px;
+  text-align: left;
 }
 .note p {
   font-size: 1.1em;

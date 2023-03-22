@@ -17,12 +17,11 @@ function Note(props) {
   title:props.title,
 content:props.content});
 
-
   }
 
   return (
     <div className="note col" style={{color:"#ECF2FF"}}>
-      <h1>{props.title}</h1>
+      <h1 style={{color:"#ECF2FF",marginTop:"10px"}}>{props.title}</h1>
       <p>{props.content}</p>
       <button style={{backgroundColor:"#0F6292",color:"#ECF2FF"}} onClick={onEdit}>
       <Edit />

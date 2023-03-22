@@ -15,8 +15,8 @@ function CreateArea(props) {
     content: ""
   });
 
-  const [loginState,updateLogin,user,updateUser] = useContext(Context);
-  
+  const [loginState,updateLogin,user,updateUser,updateNotes,updateEdit,logOut,updateNewuser] = useContext(Context);
+ 
   function handleChange(event) {
     const { name, value } = event.target;
 
@@ -36,6 +36,7 @@ function CreateArea(props) {
       title: "",
       content: ""
     });
+    
     event.preventDefault();
   }
 
