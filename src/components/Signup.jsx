@@ -96,7 +96,7 @@ const handleChange=(e)=>{
   {existingUser&&<Alert severity="warning">Email already exist !!</Alert>}
   {!emailError ? <div className="col-12">
  
- <input name="username" autocomplete="off"  type="text" value={register.username} placeholder="Email" onChange={handleChange} onBlur={validateEmail} className= {emailStyle?"form-control is-valid":"form-control"} id="validationServer01"  required/>
+ <input name="username" autoComplete="off"  type="text" value={register.username} placeholder="Email" onChange={handleChange} onBlur={validateEmail} className= {emailStyle?"form-control is-valid":"form-control"} id="validationServer01"  required/>
  
  {emailStyle &&<div className="valid-feedback">
    Looks good!
@@ -105,7 +105,7 @@ const handleChange=(e)=>{
  
  </div> :   <div className="col-12">
     
-    <input name="username" autocomplete="off" type="text" value={register.username} placeholder="Email" onChange={handleChange} onBlur={validateEmail}  className="form-control is-invalid" id="validationServer04" aria-describedby="validationServer05Feedback" required/>
+    <input name="username" autoComplete="off" type="text" value={register.username} placeholder="Email" onChange={handleChange} onBlur={validateEmail}  className="form-control is-invalid" id="validationServer04" aria-describedby="validationServer05Feedback" required/>
     <div id="validationServer04Feedback" className="invalid-feedback">
       {emailError}
     </div>

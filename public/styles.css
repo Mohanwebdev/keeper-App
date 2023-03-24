@@ -175,13 +175,38 @@ form.create-note button {
   outline: none;
 }
 
-
-@media only screen and (max-width: 600px) {
+@media only screen and (min-width:321px) and (max-width:768px) { 
+  .navbar{
+    width: 115%;
+  }
   .container{
-    width: 100%;
+  
+    width: 80%;
   }
   form.create-note{
-    width: 100%;
+    width: 80%;
   }
-
-}
+   .loginpage{
+    max-width: 95%;
+   }
+   .note{
+    width: 100%;
+    margin: 10px auto;
+   }
+    }
+    @media (min-width: 992px){
+      .container, .container-lg, .container-md, .container-sm {
+        max-width: 960px;
+    }
+    }
+   
+    @media (min-width: 768px){
+      .container, .container-md, .container-sm {
+        max-width: 547px;
+    }
+    }
+    @media (min-width: 1200px){
+      .container, .container-lg, .container-md, .container-sm, .container-xl {
+        max-width: 1140px;
+    }
+    }
